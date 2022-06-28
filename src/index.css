@@ -1,0 +1,439 @@
+:root {
+  --standard-blue: #0079ff;
+  --standard-blue-fade: #60abff;
+  --white: #fff;
+
+  --light-bg: #f6f8ff;
+  --light-color: #4b6a9b;
+  --light-dark-text: #222731;
+  --light-med-dark-text: #2b3442;
+  --light-gray: #697c9a;
+  --light-off-white: #fefefe;
+
+  --dark-bg: #141d2f;
+  --dark-blue: #1e2a47;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Space Mono", "Courier New", Courier, monospace;
+  padding: 1.5em;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.625rem;
+  line-height: 38px;
+}
+
+h2 {
+  font-size: 1rem; 
+  line-height: 33px;
+}
+
+h3 {
+  font-size: 0.8125rem; 
+  line-height: 24px;
+}
+
+h4 {
+  font-size: 0.8125rem;
+  line-height: 20px;
+  font-weight: normal;
+}
+
+p {
+  font-size: 0.8125rem;
+  line-height: 25px;
+}
+
+button {
+  user-select: none;
+  border: none;
+  border-radius: 0.625em;
+  background-color: var(--standard-blue);
+  color: var(--white);
+  font-size: 0.875rem;
+  font-weight: bold;
+  padding: 0.78125em 1em;
+}
+
+button:hover {
+  background-color: var(--standard-blue-fade);
+}
+
+.dark-theme {
+  color: var(--white);
+}
+
+.dark-theme .user-search-bar--input,
+.dark-theme .user-card {
+  background-color: var(--dark-blue);
+}
+
+.dark-theme .user-card--contact-icon {
+  filter: brightness(0) invert(1);
+}
+
+.light-theme {
+  color: var(--light-color);
+}
+
+.light-theme .header--title {
+  color: var(--light-dark-text);
+}
+
+.light-theme .user-search-bar--input {
+  box-shadow: 0px 16px 30px -10px hsla(227, 46%, 50%, 0.2);
+}
+
+.light-theme .user-search-bar--input,
+.light-theme .user-card {
+  background-color: var(--light-off-white);
+}
+
+.light-theme .user-card--stats {
+  background-color: var(--light-bg);
+}
+
+.light-theme .user-card--title,
+.light-theme .user-stat-number {
+  color: var(--light-med-dark-text);
+}
+
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header,
+main {
+  width: 100%;
+  max-width: 350px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  
+  margin-bottom: 2.25em;
+}
+
+.header--title {
+  cursor: pointer;
+  margin: 0;
+}
+
+.header--theme-toggler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8125rem;
+  font-weight: bold;
+  letter-spacing: 2.5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.header--theme-toggler span {
+  margin-right: 1em;
+}
+
+.user-search-bar {
+  position: relative;
+  width: 100%;
+}
+
+.user-search-bar--input {
+  border: none;
+  border-radius: 0.9375em;
+  color: inherit;
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  line-height: 25px;
+  padding: 18px 0;
+  padding-left: 45px;
+  padding-right: 98px;
+}
+
+.user-search-bar--icon {
+  position: absolute;
+  max-width: 20.5px;
+  margin: 20px 16px 20px;
+}
+
+.user-search-bar--button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: inherit;
+  line-height: 25px;
+  margin: 7px;
+}
+
+.user-search-bar--no-results {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: red;
+  font-weight: bold;
+  width: 92px;
+  margin: 18px 106px;
+}
+
+.user-card {
+  border-radius: 0.9375em;
+  background-color: var(--dark-blue);
+  box-shadow: 0px 4px 4px 0px hsla(0, 0%, 0%, 0.251);
+  margin-top: 1em;
+  padding: 2em 1.5em 3em;
+}
+
+.user-card--user {
+  display: flex;
+}
+
+.user-card--user-avatar {
+  border-radius: 50%;
+  max-width: 70px;
+}
+
+.user-card--user-avatar-wrapper {
+  margin-right: 1.25em;
+}
+
+.user-info--username {
+  color: var(--standard-blue);
+  font-weight: normal;
+  margin-bottom: 0.375em;
+}
+
+.user-card--bio {
+  margin: 2em 0 1.375em;
+}
+
+.user-card--stats {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--dark-bg);
+  border-radius: 0.625em;
+  text-align: center;
+  margin-bottom: 1.5em;
+  padding: 1.125em 1em;
+}
+
+.user-stat-title {
+  font-size: 0.6875rem;
+}
+
+.user-stat-number {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.user-card--contact {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.unavailable {
+  opacity: 0.25;
+}
+
+.user-card--contact-item {
+  display: flex;
+}
+
+.user-card--contact-item:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.user-card--contact-icon-wrapper {
+  min-width: 2em;
+}
+
+@media (prefers-color-scheme: dark) {
+  body,
+  .dark-theme {
+    background: var(--dark-bg);
+    color: var(--white);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body,
+  .light-theme {
+    background: var(--light-bg);
+    color: var(--light-color);
+  }
+}
+
+
+@media only screen and (min-width: 700px) {
+  body {
+    padding: 13.67vh 6.125em 2em;
+  }
+
+  h1 {
+    font-size: 1.625rem;
+    line-height: 38px;
+  }
+
+  h2 {
+    font-size: 1.625rem;
+    line-height: 38px;
+  }
+
+  h3 {
+    font-size: 1rem;
+    line-height: 24px;
+  }
+
+  h4 {
+    font-size: 1rem;
+    line-height: 20px;
+    font-weight: normal;
+  }
+
+  p {
+    font-size: 0.9375rem;
+    line-height: 25px;
+  }
+
+  .header,
+  main {
+    max-width: 573px;
+  }
+
+  .user-search-bar--icon {
+    max-width: 1.5em;
+    margin: 23px 24px 22px 24px;
+  }
+
+  .user-search-bar--input {
+    font-size: 1.125rem;
+    padding: 1.223em 7.25em 1.223em 4.4445em;
+  }
+
+  .user-search-bar--button {
+    font-size: 1rem;
+    line-height: 23.7px;
+    margin: 9.5px;
+    padding: 13.5px 24px;
+  }
+
+  .user-search-bar--no-results {
+    width: 92px;
+    margin: 24px 134px;
+  }
+
+  .user-card {
+    margin-top: 1.5em;
+    padding: 2.5em;
+  }
+
+  .user-card--user {
+    align-items: center;
+  }
+
+  .user-info--username {
+    margin-top: 2px;
+    margin-bottom: 4px;
+  }
+
+  .user-card--user-avatar-wrapper {
+    margin-right: 2.5em;
+  }
+
+  .user-card--user-avatar {
+    max-width: 117px;
+  }
+
+  .user-card--bio {
+    margin: 1.5em 0 2em;
+  }
+
+  .user-card--stats {
+    margin-bottom: 1.875em;
+  }
+
+  .user-stat-title {
+    font-size: 0.8125rem;
+  }
+
+  .user-stat-number {
+    font-size: 1.375rem;
+  }
+
+  .user-card--contact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .user-card--contact-item {
+    width: 75%;
+  }
+
+  .user-card--contact-item:nth-child(2) {
+    grid-area: 2 / 1 / 2 / 3;
+  }
+
+  .user-card--contact-item:nth-child(4) {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  body {
+    padding: 16vh 6.125em 2em;
+  }
+
+  .header,
+  main {
+    max-width: 730px;
+  }
+
+  .user-card {
+    position: relative;
+    padding: 2.75em;
+    padding-left: 12.625em;
+  }
+
+  .user-card--user-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+
+  .user-info--joined-date {
+    grid-area: 1 / 2 / 2 / 3;
+    justify-self: end;
+  }
+
+  .user-card--user-avatar-wrapper {
+    position: absolute;
+    top: 48px;
+    left: 48px;
+  }
+
+  .user-card--contact {
+    max-width: 100%;
+  }
+}
