@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 
+
+
 function useTheme() {
   let userThemeSetting = window.matchMedia("(prefers-color-scheme: dark)");
-  // Set theme based on the prefers-color-scheme value (user preference)
   const [isDarkTheme, setIsDarkTheme] = useState(userThemeSetting.matches);
 
   function toggleTheme() {

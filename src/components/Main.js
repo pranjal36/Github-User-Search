@@ -3,6 +3,8 @@ import SearchBar from "./SearchBar";
 import UserCard from "./UserCard";
 import { userDataContext } from "../contexts/userDataContext";
 
+
+
 function Main(props) {
   const { userData } = useContext(userDataContext);
   console.log("IS DARK THEME? - " + props.isDarkTheme);

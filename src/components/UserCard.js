@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import ListItem from "./ListItem";
 import { userDataContext } from "../contexts/userDataContext";
 
-// Icons
 import LocationIcon from "../images/icon-location.svg";
 import WebsiteIcon from "../images/icon-website.svg";
 import TwitterIcon from "../images/icon-twitter.svg";
 import CompanyIcon from "../images/icon-company.svg";
+
+
+
 
 function UserCard() {
   const { userData } = useContext(userDataContext);

@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { userDataContext } from "../contexts/userDataContext";
 import SearchIcon from "../images/icon-search.svg";
 
+
+
 function SearchBar() {
   const [inputText, setInputText] = React.useState("");
   const { error, clearError, fetchUserData } = useContext(userDataContext);
@@ -28,7 +30,7 @@ function SearchBar() {
         value={inputText}
         onChange={handleChange}
         placeholder={!error ? "Search GitHub username…" : ""}
-        maxLength={39} /* Max character length for github username */
+        maxLength={39}
       />
       <button onClick={handleSubmit} className="user-search-bar--button">
         Search

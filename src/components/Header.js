@@ -2,6 +2,7 @@ import React from "react";
 import sunIcon from "../images/icon-sun.svg";
 import moonIcon from "../images/icon-moon.svg";
 
+
 function Header(props) {
   return (
     <header className={`header ${props.isDarkTheme ? "dark-theme" : "light-theme"}`}>
@@ -16,3 +17,4 @@ function Header(props) {
 }
 
 export default Header;
+

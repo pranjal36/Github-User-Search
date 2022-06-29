@@ -1,5 +1,8 @@
 import React, { createContext } from "react";
 
+
+
+
 const Context = createContext();
 
 function UserDataContextProvider({ children }) {
@@ -36,7 +39,6 @@ function UserDataContextProvider({ children }) {
     setError(null);
   }
 
-  // On load, fetch user data for 'octocat' as default
   React.useEffect(() => {
     fetchUserData("octocat");
   }, []);
