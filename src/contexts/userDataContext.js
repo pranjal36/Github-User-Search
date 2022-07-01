@@ -1,7 +1,5 @@
 import React, { createContext } from "react";
-
-
-
+import {useLocation} from "react-router-dom";
 
 const Context = createContext();
 
@@ -9,15 +7,17 @@ function UserDataContextProvider({ children }) {
   const [loading, setLoading] = React.useState(false);
   const [userData, setUserData] = React.useState(undefined);
   const [error, setError] = React.useState(null);
+  // const {q} = useLocation()
+  // const [searchParams, setSearchParams] = useSearchParams();
 
   async function fetchUserData(user) {
-    console.log("FETCHING USER " + user);
+    // console.log("FETCHING USER " + user);
     setLoading(true);
     setError(null);
     try {
       let response = await fetch(`https://api.github.com/users/${user}`);
       let data = await response.json();
-      console.log(data);
+      // console.log(data);
       if (data) {
         if (data.message) {
           throw Error("User not found!");
@@ -28,7 +28,7 @@ function UserDataContextProvider({ children }) {
         throw Error("Failed to fetch user data.");
       }
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       setError(e);
     } finally {
       setLoading(false);
@@ -40,7 +40,16 @@ function UserDataContextProvider({ children }) {
   }
 
   React.useEffect(() => {
-    fetchUserData("octocat");
+    const location = window.location.href;
+    const query = location.split('?')[1];
+    const params = new URLSearchParams(query);
+    const q = params.get("q");
+    //  console.log(q);
+    if(q!=null){
+    fetchUserData(q);
+    }else{
+      fetchUserData("Octocat");
+    }
   }, []);
 
   return (

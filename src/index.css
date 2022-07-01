@@ -269,6 +269,10 @@ main {
   min-width: 2em;
 }
 
+.suggestee{
+  cursor: pointer;
+}
+
 @media (prefers-color-scheme: dark) {
   body,
   .dark-theme {

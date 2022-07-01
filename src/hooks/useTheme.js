@@ -12,7 +12,7 @@ function useTheme() {
   }
 
   function applyBodyStyles() {
-    console.log("BODY STYLES CHANGING TO DARK THEME? " + isDarkTheme);
+    // console.log("BODY STYLES CHANGING TO DARK THEME? " + isDarkTheme);
     document.body.style.backgroundColor = isDarkTheme ? "#141d2f" : "#f6f8ff";
   }
 
