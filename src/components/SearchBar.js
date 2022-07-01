@@ -72,7 +72,7 @@ function SearchBar() {
       {error && <p className="user-search-bar--no-results">No results</p>}
       {flag && usermatch && usermatch.map((item,index) => (
         <div className="suggestee" onClick={setter} key={index} style={{marginLeft: "35%", marginTop: "5px"}}>
-          <Card style={{midth: "50%"}} title={`${item.login}`}>
+          <Card style={{Width: "50%"}} title={`${item.login}`}>
           
           </Card>
         </div>
