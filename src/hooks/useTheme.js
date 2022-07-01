@@ -18,6 +18,7 @@ function useTheme() {
 
   useEffect(() => {
     applyBodyStyles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDarkTheme]);
 
   return [isDarkTheme, toggleTheme];
