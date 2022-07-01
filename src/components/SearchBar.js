@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext} from "react";
 import { userDataContext } from "../contexts/userDataContext";
 import SearchIcon from "../images/icon-search.svg";
 import axios from "axios";
-import {Input, Card} from "antd";
+import {Card} from "antd";
 import {useSearchParams} from "react-router-dom";
 
 
@@ -13,7 +13,6 @@ function SearchBar() {
   const [usermatch, setusermatch] = useState([]);
   const [sp,setSp] = useSearchParams();
   const [flag, setflag] = useState(true);
-  const [a,setA]=useState(true);
 
   useEffect(() => {
     setflag(true);
@@ -24,12 +23,11 @@ function SearchBar() {
       };
       console.log(window.location.href);
       console.log("click");
-      if(a)
       loadusers();
     },[sp]);
 
   function handleChange(e) {
-    const { name, value } = e.target;
+    const { value } = e.target;
     setInputText(value);
     clearError();
     const nsp =  new URLSearchParams(sp);
