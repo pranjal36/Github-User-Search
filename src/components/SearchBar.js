@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext} from "react";
+import React, { useState,useEffect, useContext} from "react";
 import { userDataContext } from "../contexts/userDataContext";
 import SearchIcon from "../images/icon-search.svg";
 import axios from "axios";
@@ -21,12 +21,27 @@ function SearchBar() {
       setusers(response.data.items);
       // console.log(response.data.items);
       };
-      console.log(window.location.href);
-      console.log("click");
+      // console.log(window.location.href);
+      // console.log("click");
+      let timer;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
       loadusers();
+      }, 200);
     },[sp]);
 
   function handleChange(e) {
+    // let timer;
+    // clearTimeout(timer);
+    // timer = setTimeout(() => {
+    // setflag(true);
+    // const loadusers = async () => {
+    //   const response = await axios.get("https://api.github.com/search/users?"+sp.toString()+"&per_page=10");
+    //   setusers(response.data.items);
+    //   // console.log(response.data.items);
+    //   };
+    //   // console.log(window.location.href);
+    //   // console.log("click");
     const { value } = e.target;
     setInputText(value);
     clearError();
@@ -34,7 +49,23 @@ function SearchBar() {
     nsp.set('q',value);
     setSp(nsp);
     setusermatch(users);
+    // loadusers();
+    // }, 500);
   }
+
+  // const debounce = function(e,fn,d){
+  //   let timer;
+  //   return function(){
+  //     clearTimeout(timer);
+  //     timer = setTimeout(() =>{
+  //         fn.apply(e);
+  //     }, d);
+  //   }
+  // }
+
+  // function betterFunction(e){
+  //    debounce(e,handleChange, 500);
+  // }
 
   function setter(e){
    
@@ -44,7 +75,8 @@ function SearchBar() {
     }
     fetchUserData(e.target.innerHTML);
     setflag(false);
-    console.log("click two");
+    setusermatch([]);
+    // console.log("click two");
   }
 
   function handleSubmit(e) {
