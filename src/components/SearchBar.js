@@ -14,21 +14,17 @@ function SearchBar() {
   const [sp,setSp] = useSearchParams();
   const [flag, setflag] = useState(true);
 
+  
   useEffect(() => {
     setflag(true);
-    const loadusers = async () => {
-      const response = await axios.get("https://api.github.com/search/users?"+sp.toString()+"&per_page=10");
-      setusers(response.data.items);
-      // console.log(response.data.items);
-      };
-      // console.log(window.location.href);
-      // console.log("click");
-      let timer;
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-      loadusers();
-      }, 200);
-    },[sp]);
+    const timeoutId = setTimeout(() => {
+      (async() => {
+        const response = await axios.get("https://api.github.com/search/users?"+sp.toString()+"&per_page=10");
+        setusers(response.data.items);
+      })()
+    }, 400)
+    return () => clearTimeout(timeoutId)
+  }, [sp])
 
   function handleChange(e) {
     // let timer;
@@ -48,7 +44,7 @@ function SearchBar() {
     const nsp =  new URLSearchParams(sp);
     nsp.set('q',value);
     setSp(nsp);
-    setusermatch(users);
+    // setusermatch(users);
     // loadusers();
     // }, 500);
   }
