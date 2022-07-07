@@ -13,7 +13,6 @@ function SearchBar() {
   const [usermatch, setusermatch] = useState([]);
   const [sp,setSp] = useSearchParams();
   const [flag, setflag] = useState(true);
-
   
   useEffect(() => {
     setflag(true);
@@ -21,6 +20,7 @@ function SearchBar() {
       (async() => {
         const response = await axios.get("https://api.github.com/search/users?"+sp.toString()+"&per_page=10");
         setusers(response.data.items);
+        setusermatch(response.data.items);
       })()
     }, 400)
     return () => clearTimeout(timeoutId)
@@ -44,7 +44,7 @@ function SearchBar() {
     const nsp =  new URLSearchParams(sp);
     nsp.set('q',value);
     setSp(nsp);
-    // setusermatch(users);
+    setusermatch(users);
     // loadusers();
     // }, 500);
   }
@@ -72,6 +72,7 @@ function SearchBar() {
     fetchUserData(e.target.innerHTML);
     setflag(false);
     setusermatch([]);
+    setInputText("");
     // console.log("click two");
   }
 
@@ -82,7 +83,7 @@ function SearchBar() {
     setInputText("");
     setflag(false);
   }
-
+  
   return (
     <form className="user-search-bar">
       <img className="user-search-bar--icon" src={SearchIcon} alt="" />
